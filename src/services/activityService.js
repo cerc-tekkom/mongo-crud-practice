@@ -16,4 +16,21 @@ const getAllActivityService = async () => {
   }
 };
 
-module.exports = { disconnectPrisma, getAllActivityService };
+const createActivityService = async (data) => {
+  try {
+    const result = await prisma.activity.create({
+      data: {
+        name: data.name,
+      },
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = {
+  disconnectPrisma,
+  getAllActivityService,
+  createActivityService,
+};

@@ -15,4 +15,22 @@ const getAllActivity = async (req, res) => {
   }
 };
 
-module.exports = { getAllActivity };
+const createActivity = async (req, res) => {
+  try {
+    const activityDataRequest = req.body;
+    const data = await activityService.createActivityService(
+      activityDataRequest
+    );
+    return res.status(201).json({
+      message: "Activity created successfully",
+      data,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to retrieve activities",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { getAllActivity, createActivity };
