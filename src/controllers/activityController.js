@@ -1,8 +1,8 @@
-import { getAllActivityService } from "../services/activityService";
+const activityService = require("../services/activityService");
 
-export const getAllActivity = async (req, res) => {
+const getAllActivity = async (req, res) => {
   try {
-    const data = await getAllActivityService();
+    const data = await activityService.getAllActivityService();
     return res.status(200).json({
       message: "Activity retrieved successfully",
       data,
@@ -14,3 +14,5 @@ export const getAllActivity = async (req, res) => {
     });
   }
 };
+
+module.exports = { getAllActivity };

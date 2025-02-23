@@ -1,8 +1,8 @@
-import express from "express";
-import { getAllActivity } from "../controllers/activityController";
+const express = require("express");
+const activityController = require("../controllers/activityController");
 
 const router = express.Router();
 
-router.get("/", getAllActivity);
+router.get("/", activityController.getAllActivity);
 
-export default router;
+module.exports = router;

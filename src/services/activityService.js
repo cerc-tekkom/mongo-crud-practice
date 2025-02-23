@@ -1,13 +1,13 @@
-import { PrismaClient } from "@prisma/client/extension";
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
 // Disconnect Prisma client when done
-export const disconnectPrisma = async () => {
+const disconnectPrisma = async () => {
   await prisma.$disconnect();
 };
 
-export const getAllActivityService = async () => {
+const getAllActivityService = async () => {
   try {
     const result = await prisma.activity.findMany();
     return result;
@@ -15,3 +15,5 @@ export const getAllActivityService = async () => {
     throw new Error(error.message);
   }
 };
+
+module.exports = { disconnectPrisma, getAllActivityService };
