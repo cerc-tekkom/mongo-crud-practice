@@ -29,8 +29,39 @@ const createActivityService = async (data) => {
   }
 };
 
+const getDetailActivityService = async (id) => {
+  try {
+    const result = await prisma.activity.findUnique({
+      where: {
+        id,
+      },
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const updateActivityService = async (data, id) => {
+  try {
+    const result = await prisma.activity.update({
+      where: {
+        id,
+      },
+      data: {
+        name: data.name,
+      },
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   disconnectPrisma,
   getAllActivityService,
   createActivityService,
+  getDetailActivityService,
+  updateActivityService,
 };

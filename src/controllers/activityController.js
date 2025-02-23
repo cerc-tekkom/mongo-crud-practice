@@ -33,4 +33,45 @@ const createActivity = async (req, res) => {
   }
 };
 
-module.exports = { getAllActivity, createActivity };
+const getDetailActivity = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await activityService.getDetailActivityService(id);
+    return res.status(200).json({
+      message: "Detail activity retrieved successfully",
+      data,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to retrieve activities",
+      error: error.message,
+    });
+  }
+};
+
+const updateActivity = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const activityDataRequest = req.body;
+    const data = await activityService.updateActivityService(
+      activityDataRequest,
+      id
+    );
+    return res.status(200).json({
+      message: "Activity updated successfully",
+      data,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to retrieve activities",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = {
+  getAllActivity,
+  createActivity,
+  getDetailActivity,
+  updateActivity,
+};

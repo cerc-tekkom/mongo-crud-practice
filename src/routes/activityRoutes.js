@@ -5,5 +5,7 @@ const router = express.Router();
 
 router.get("/", activityController.getAllActivity);
 router.post("/", activityController.createActivity);
+router.get("/:id", activityController.getDetailActivity);
+router.put("/:id", activityController.updateActivity);
 
 module.exports = router;
