@@ -4,14 +4,13 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "start-dev": "nodemon index.js",
+    "start-dev": "nodemon src/index.js",
     "build": "webpack",
     "prod": "node dist/final.js",
     "prisma-migrate:deploy": "prisma migrate deploy",
     "prisma-migrate:dev": "prisma migrate dev",
     "postinstall": "prisma generate"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",
@@ -19,6 +18,7 @@
     "schema": "prisma/schema.prisma"
   },
   "dependencies": {
+    "@prisma/client": "^6.4.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
