@@ -58,10 +58,24 @@ const updateActivityService = async (data, id) => {
   }
 };
 
+const deleteActivityService = async (id) => {
+  try {
+    const result = await prisma.activity.delete({
+      where: {
+        id,
+      },
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   disconnectPrisma,
   getAllActivityService,
   createActivityService,
   getDetailActivityService,
   updateActivityService,
+  deleteActivityService,
 };

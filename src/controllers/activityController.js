@@ -69,9 +69,25 @@ const updateActivity = async (req, res) => {
   }
 };
 
+const deleteActivity = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await activityService.deleteActivityService(id);
+    return res.status(200).json({
+      message: "Activity deleted successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to retrieve activities",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllActivity,
   createActivity,
   getDetailActivity,
   updateActivity,
+  deleteActivity,
 };

@@ -7,5 +7,6 @@ router.get("/", activityController.getAllActivity);
 router.post("/", activityController.createActivity);
 router.get("/:id", activityController.getDetailActivity);
 router.put("/:id", activityController.updateActivity);
+router.delete("/:id", activityController.deleteActivity);
 
 module.exports = router;
